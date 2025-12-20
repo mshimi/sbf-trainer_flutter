@@ -100,6 +100,7 @@ class QuizMapper {
     final passed = quiz.earnedPoints >= (quiz.totalPoints * 0.9).ceil();
 
     return QuizResult(
+      quizType: quiz.type,
       totalQuestions: quiz.totalQuestions,
       correctAnswers: quiz.correctCount,
       totalPoints: quiz.totalPoints,
