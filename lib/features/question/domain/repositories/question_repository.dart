@@ -29,6 +29,11 @@ abstract class QuestionRepository {
     List<String>? categoryIds,
   });
 
+
+  Future<List<Question>> getQuestionsByIds({
+    required List<int> ids
+});
+
   /// Returns total count of questions for given categories
   Future<int> getQuestionCountByCategories(List<String>? categoryIds);
 

@@ -89,9 +89,14 @@ class QuizSessionCubit extends Cubit<QuizSessionState> {
     final questionIds = quiz.questions.map((q) => q.questionId).toList();
 
     // Fetch questions in batches
-    final questions = await _questionRepository.getQuestionsPaginated(
-      limit: 1000,
-      offset: 0,
+    // final questions = await _questionRepository.getQuestionsPaginated(
+    //   limit: 1000,
+    //   offset: 0,
+    //   );
+
+  // fetch by Ids for better Performance // needs tests
+    final questions = await _questionRepository.getQuestionsByIds(
+        ids: questionIds
     );
 
     _questionCache = {

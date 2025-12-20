@@ -28,6 +28,8 @@ abstract class QuestionLocalDataSource {
     required int count,
     List<String>? categoryIds,
   });
+
+  Future<List<Question>> getQuestionsByIds({required List<int> ids});
 }
 
 class QuestionLocalDataSourceImpl implements QuestionLocalDataSource {
@@ -199,5 +201,15 @@ class QuestionLocalDataSourceImpl implements QuestionLocalDataSource {
 
     final results = await query.get();
     return results.map((row) => row.read(_db.questions.id)!).toList();
+  }
+
+  @override
+  Future<List<Question>> getQuestionsByIds({required List<int> ids}) async {
+
+    if (ids.isEmpty) return <Question>[];
+
+    return (_db.select(_db.questions)..where((q) => q.id.isIn(ids))).get();
+
+
   }
 }

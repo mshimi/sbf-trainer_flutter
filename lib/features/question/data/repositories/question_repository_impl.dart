@@ -89,4 +89,13 @@ class QuestionRepositoryImpl implements QuestionRepository {
       categoryIds: categoryIds,
     );
   }
+
+  @override
+  Future<List<Question>> getQuestionsByIds({required List<int> ids}) async {
+
+    final rows = await _localDataSource.getQuestionsByIds(ids :ids);
+
+    return rows.map((row) => _mapper.fromDbRow(row)).toList();
+
+  }
 }
