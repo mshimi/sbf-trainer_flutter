@@ -45,9 +45,14 @@ class QuizRepositoryImpl implements QuizRepository {
     }
 
     // Fetch questions from database
-    final questions = await _questionDataSource.getQuestionsPaginated(
-      limit: 1000,
-      offset: 0,
+    // final questions = await _questionDataSource.getQuestionsPaginated(
+    //    limit: 1000,
+    //    offset: 0,
+    //  );
+
+ // this method applied for better performance
+    final questions = await _questionDataSource.getQuestionsByIds(
+        ids: questionIds
     );
 
     final questionMap = {for (var q in questions) q.id: q};
