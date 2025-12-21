@@ -25,6 +25,8 @@ void main() {
           answers: [
             {'id': 'a1', 'text': 'Answer 1', 'is_correct': true},
             {'id': 'a2', 'text': 'Answer 2', 'is_correct': false},
+            {'id': 'a3', 'text': 'Answer 3', 'is_correct': false},
+            {'id': 'a4', 'text': 'Answer 4', 'is_correct': false},
           ],
         );
 
@@ -33,10 +35,10 @@ void main() {
         expect(question.id, 1);
         expect(question.categoryId, 'basisfragen');
         expect(question.questionText, 'What is the answer?');
-        expect(question.points, 2);
+        expect(question.points, 3);
         expect(question.hasImages, true);
         expect(question.imageRefs, ['image1.png', 'image2.png']);
-        expect(question.answers.length, 2);
+        expect(question.answers.length, 4);
       });
 
       test('parses answers correctly', () {
